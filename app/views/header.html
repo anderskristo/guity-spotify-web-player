@@ -1,1 +1,9 @@
 <h1>Guity</h1>
+<div class="search__artist" ng-controller="SearchCtrl">
+  <input class="search" placeholder="Search for an artist, ex. Ben Howard" type="text" ng-model="searchField" autofocus="true">
+  <ul>
+    <li ng-repeat="artist in artists">
+      {{artist.name}}
+    </li>
+  </ul>
+</div>
