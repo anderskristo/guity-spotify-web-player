@@ -1,3 +1,38 @@
 /* -=Mixins
 ------------------------------------ */
 
+
+/* -=Box sizing */
+@mixin box-sizing($value) {
+ -webkit-box-sizing: $value;
+    -moz-box-sizing: $value;
+         box-sizing: $value;
+}
+
+/* -=Border small */
+@mixin border-small($position, $color) {
+  border-#{$position}: 1px solid $color;
+}
+
+/* -=Border large */
+@mixin border-large($position, $color) {
+  border-#{$position}: 3px solid $color;
+}
+
+/* -=Border radius */
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+
+/* -=Transition */
+@mixin transition($transition-property, $transition-time, $method) {
+  -webkit-transition: $transition-property $transition-time $method;
+     -moz-transition: $transition-property $transition-time $method;
+      -ms-transition: $transition-property $transition-time $method;
+       -o-transition: $transition-property $transition-time $method;
+          transition: $transition-property $transition-time $method;
+}
