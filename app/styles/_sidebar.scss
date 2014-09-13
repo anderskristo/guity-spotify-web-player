@@ -13,13 +13,29 @@
   @include box-sizing(border-box);
 }
 
+/* -=Logotype */
+
+.logo {
+  height: 80px;
+  text-align: center;
+  background-color: $main-color;
+  span {
+    display: block;
+    padding: 26px;
+    font-size: 27px;
+    text-transform: uppercase;
+    color: #fff;
+  }
+}
+
 /* -=Main navigation */
 
 .g-navigation {
   float: left;
+  margin-top: 20px;
   ul {
     li {
-      display: inline-block;
+      display: block;
       margin-right: 15px;
       line-height: 36px;
       a {
