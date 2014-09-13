@@ -1,11 +1,10 @@
 'use strict';
 
 angular.module('guityApp')
-  .controller('SearchCtrl', function ($scope, searchArtists) {
+  .controller('SearchCtrl', function ($scope, Spotify) {
     $scope.$watch('searchField', function(newVal) {
-      searchArtists.query({artists: newVal}, function(data) {
+      Spotify.search(newVal, 'artist').then(function (data) {
         $scope.artists = data.artists.items;
-        //TODO: Make request not break when whitespace
       });
     });
   });

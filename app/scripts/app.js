@@ -5,7 +5,8 @@ angular
     'ngCookies',
     'ngResource',
     'ngSanitize',
-    'ngRoute'
+    'ngRoute',
+    'spotify'
   ])
   .config(function ($routeProvider) {
     $routeProvider
