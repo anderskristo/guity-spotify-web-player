@@ -2,6 +2,9 @@
 
 <div class="site">
   <ng-include src="'views/header.html'"></ng-include>
-  <h1>{{artist.name}}</h1>
+  <div class="artist-page">
+    <h1>{{artist.name}}</h1>
+    <img ng-src="{{artist.images.1.url}}" alt=""/>
+  </div>
 </div>
 

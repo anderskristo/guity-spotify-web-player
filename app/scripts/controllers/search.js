@@ -6,7 +6,6 @@ angular.module('guityApp')
       if (newVal) {
         Spotify.search(newVal, 'artist').then(function (data) {
           $scope.artists = data.artists.items;
-          console.log($scope.artists)
         });
       } else {
         $scope.artists = [];

@@ -4,7 +4,7 @@
 .header {
   float: left;
   width: 100%;
-  height: 80px;
+  min-height: 80px;
   background-color: #fff;
   @include box-sizing(border-box);
 }
