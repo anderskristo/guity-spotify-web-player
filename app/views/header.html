@@ -8,7 +8,7 @@
     <div class="search-results">
       <div ng-repeat="artist in artists">
         <img ng-src="{{ artist.images.3.url }}" width="50" height="50"/>
-        {{ artist.name }}
+        <a href="#/artist/{{artist.id}}">{{ artist.name }}</a>
       </div>
     </div>
   </div>
