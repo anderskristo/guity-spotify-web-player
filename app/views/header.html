@@ -6,7 +6,7 @@
       <input class="search__input" placeholder="Search.." type="text" ng-model="searchField" autofocus="true">
     </div>
     <div class="search-results">
-      <div ng-repeat="artist in artists">
+      <div class="search-item" ng-repeat="artist in artists">
         <img ng-src="{{ artist.images.3.url }}" width="50" height="50"/>
         <a href="#/artist/{{artist.id}}">{{ artist.name }}</a>
       </div>

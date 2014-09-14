@@ -7,8 +7,10 @@ angular.module('guityApp')
         Spotify.search(newVal, 'artist').then(function (data) {
           $scope.artists = data.artists.items;
         });
+        $('.search-results').addClass('is-active');
       } else {
-        $scope.artists = [];
+        $scope.artist = [];
+        $('.search-results').removeClass('is-active');
       }
     });
   });
