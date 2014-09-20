@@ -30,6 +30,8 @@ angular
 
     // TODO: Controls for if logged in or not
     var token = Spotify.authToken;
-    console.log(token)
+    console.log(Spotify)
+
+
 
   });

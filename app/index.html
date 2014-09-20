@@ -19,13 +19,19 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="guityApp">
+  <body ng-app="guityApp" ng-controller="AppCtrl">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="wrapper" ng-view="" ng-controller="AppCtrl"></div>
+    <div class="wrapper" ng-view=""></div>
+
+    <div class="login-area" ng-hide="showLogin" style="position: absolute; z-index: 10000;">
+      <div ng-controller="LoginCtrl">
+        <h2><a ng-click="login()">Login</a></h2>
+      </div>
+    </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
