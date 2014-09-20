@@ -27,25 +27,9 @@ angular
     SpotifyProvider.setScope('user-read-private playlist-read-private playlist-modify-private playlist-modify-public');
   })
   .controller('AppCtrl', function ($scope, Spotify, $location) {
-    console.log('appcontroller');
-    console.log(location);
+
     // TODO: Controls for if logged in or not
-
-    function checkUser() {
-      Spotify.getMe().then(function(userInfo) {
-        console.log('heh');
-      })
-    }
-
-    window.addEventListener('message', function(event) {
-      console.log('message: ', event);
-      var hash = event.data;
-      console.log(hash)
-
-      console.log(Spotify.setAccessToken());
-
-    }, false);
-
-
+    var token = Spotify.authToken;
+    console.log(token)
 
   });
