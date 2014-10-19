@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('guityApp')
-  .controller('LoginCtrl', function ($scope, Spotify, $location) {
+  .controller('LoginCtrl', function ($scope, Auth, $location) {
     $scope.isLoggedIn = false;
     $scope.login = function () {
-      Spotify.login();
+      console.log('login you fool ...');
+      Auth.doLogin();
     };
   });

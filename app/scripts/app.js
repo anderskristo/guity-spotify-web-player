@@ -5,33 +5,82 @@ angular
     'ngCookies',
     'ngResource',
     'ngSanitize',
-    'ngRoute',
-    'spotify'
+    'ngRoute'
   ])
-  .config(function ($routeProvider, $locationProvider, SpotifyProvider) {
+  .config(function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/artist/:id', {
+      .when('/artist/:artist', {
         templateUrl: 'views/artist.html',
         controller: 'ArtistCtrl'
+      })
+      .when('/user/:username', {
+        templateUrl: 'views/user.html',
+        controller: 'UserCtrl'
+      })
+      .when('/album/:album', {
+        templateUrl: 'views/album.html',
+        controller: 'AlbumCtrl'
+      })
+      .when('/playlist', {
+        templateUrl: 'views/playlist.html',
+        controller: 'PlaylistCtrl'
       })
       .otherwise({
         redirectTo: '/'
       });
-
-    SpotifyProvider.setClientId('2e9081bb70bb40538a16c015c3db8d48');
-    SpotifyProvider.setRedirectUri('http://127.0.0.1:9000/callback.html');
-    SpotifyProvider.setScope('user-read-private playlist-read-private playlist-modify-private playlist-modify-public');
   })
-  .controller('AppCtrl', function ($scope, Spotify, $location) {
+  .controller('AppCtrl', function ($scope, $location, guityAPI, Auth) {
 
-    // TODO: Controls for if logged in or not
-    var token = Spotify.authToken;
-    console.log(Spotify)
+    function checkUser() {
+      guityAPI.getCurrentUser().then(function (user) {
+        Auth.setUserName(user.id);
+        Auth.setUserCountry(user.country);
+        console.log(user);
+        console.log('we are in ...');
+        $scope.$emit('login');
+        $location.replace();
+      }, function (err) {
+        console.log('error ...');
+        $scope.showLogin = true;
+        $location.replace();
+      });
+    }
 
+    $scope.username = Auth.getUserName();
+    $scope.userCountry = Auth.getUserCountry();
 
+    $scope.isLoggedIn = (Auth.getAccessToken() !== '');
+    $scope.showGuity = $scope.isLoggedIn;
+    $scope.showLogin = !$scope.isLoggedIn;
+
+    $scope.$on('login', function () {
+      $scope.showGuity = true;
+      $scope.showLogin = false;
+    });
+
+    $scope.$on('logout', function () {
+      $scope.showGuity = false;
+      $scope.showLogin = true;
+    });
+
+    $scope.logout = function () {
+      console.log('Leaving ...');
+      Auth.setUserName('');
+      Auth.setAccessToken('', 0);
+      $scope.$emit('logout');
+    };
+
+    window.addEventListener("message", function (event) {
+      console.log('got postmessage', event);
+      var hash = JSON.parse(event.data);
+      if (hash.type === 'access_token') {
+        Auth.setAccessToken(hash.access_token, hash.expires_in || 60);
+        checkUser();
+      }
+    }, false);
 
   });

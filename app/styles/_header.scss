@@ -14,6 +14,11 @@
 .search-artist {
   position: absolute;
   height: 100%;
+  width: 100%;
+  &.is-hidden {
+    height: auto;
+    width: auto;
+  }
 }
 
 .input-wrapper {
@@ -24,7 +29,7 @@
   .fa.fa-search {
     position: absolute;
     right: 35px;
-    top: 25px;
+    top: 23px;
     color: $main-color;
     font-size: 18px;
   }
@@ -45,7 +50,7 @@
 .search-results {
   position: absolute;
   top: 80px;
-  left: -482px;
+  left: -3482px;
   overflow-y: scroll;
   padding: 20px;
   width: 100%;
@@ -55,9 +60,32 @@
   &.is-active {
     left: 0px;
   }
-  @include transition(left, 0.1s, linear);
   img {
     @include border-radius(50%);
+  }
+}
+
+.search-results table {
+  width: 100%;
+  border-collapse: collapse;
+  th {
+    padding: 0 10px;
+    text-align: left;
+  }
+  tbody tr {
+    border-bottom: 1px solid #eee;
+  }
+  td {
+    padding: 10px;
+    vertical-align: middle;
+    a {
+      color: #3D3D3D;
+      text-decoration: none;
+      @include transition(color, .3s, ease);
+      &:hover {
+        color: $main-color;
+      }
+    }
   }
 }
 
@@ -77,4 +105,10 @@
       color: $main-color;
     }
   }
+}
+
+.wc-user {
+  float: right;
+  position: relative;
+  z-index: 101;
 }

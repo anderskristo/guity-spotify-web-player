@@ -1,12 +1,9 @@
 'use strict';
 
 angular.module('guityApp')
-  .controller('ArtistCtrl', function ($scope, $routeParams, Spotify) {
-    Spotify.getArtist($routeParams.id)
-      .then(function(data) {
-        $scope.artist = data;
-        console.log(data);
-      }, function(err) {
-        console.error(err);
-      });
+  .controller('ArtistCtrl', function ($scope, $routeParams, guityAPI, Auth) {
+    $scope.artist = $routeParams.artist;
+    guityAPI.getArtist($scope.artist).then(function (artist) {
+      $scope.artistInfo = artist;
+    });
   });

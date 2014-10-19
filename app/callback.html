@@ -4,21 +4,33 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title></title>
-  <script type='text/javascript'>//<![CDATA[
-  window.onload=function(){
-    var target = window.self === window.top ? window.opener : window.parent;
+  <script type='text/javascript'>
+    function init() {
+      console.log('hash', location.hash);
 
-    var hash = window.location.hash;
-    if (hash) {
-      var token = window.location.hash.split('&')[0].split('=')[1];
-      target.postMessage(token, 'http://127.0.0.1:9000/');
+      var hash = {};
+      location.hash.replace(/^#\/?/, '').split('&').forEach(function(kv) {
+        var spl = kv.indexOf('=');
+        if (spl != -1) {
+          hash[kv.substring(0, spl)] = decodeURIComponent(kv.substring(spl+1));
+        }
+      });
+
+      console.log('initial hash', hash);
+
+      if (hash.access_token) {
+        window.opener.postMessage(JSON.stringify({
+          type:'access_token',
+          access_token: hash.access_token,
+          expires_in: hash.expires_in || 0
+        }), '*');
+
+      }
+
     }
-
-  }//]]>
-
   </script>
 </head>
-<body>
+<body onload="init()">
 
 </body>
 </html>
