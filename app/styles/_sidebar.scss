@@ -3,7 +3,7 @@
 
 .g-side {
   position: absolute;
-  top: 0;
+  top: 0;  
   bottom: 0;
   left: 0;
   z-index: 1000;
@@ -34,8 +34,20 @@
 /* -=Main navigation */
 
 .g-navigation {
-  float: left;
-  margin-top: 20px;
+  position: absolute;
+  overflow: auto;
+  width: 100%;
+  height: auto;
+  top: 80px;
+  bottom: 250px;
+  padding-top: 20px;
+}
+
+.user-playlists {
+  span {
+    color: #eee;
+    font-size: 11px;
+  }
   ul {
     li {
       display: block;
@@ -45,7 +57,7 @@
         color: #fff;
         text-decoration: none;
         text-transform: uppercase;
-        font-size: 16px;
+        font-size: 13px;
       }
     }
   }

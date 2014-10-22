@@ -60,18 +60,27 @@ angular.module('guityApp')
         return ret.promise;
       },
 
-      getSearch: function (q, type, options) {
+      getPlaylistTracks: function(username, playlist) {
         var ret = $q.defer();
-        options = options || {};
-        options.q = q;
-        options.type = type;
-        $http.get(baseUrl + '/search?type=' + options.type + '&q=' + options.q, {
-
+        $http.get(baseUrl + '/users/' + encodeURIComponent(username) + '/playlists/' + encodeURIComponent(playlist) + '/tracks', {
+          headers: {
+            'Authorization': 'Bearer ' + Auth.getAccessToken()
+          }
         }).success(function(r) {
-          console.log('got search results ...');
+          console.log('got playlist tracks ...', r);
           ret.resolve(r);
         });
         return ret.promise;
+      },
+
+      getSearch: function (query) {
+				var ret = $q.defer();
+				$http.get(baseUrl + '/search?type=track&q=' + encodeURIComponent(query), {
+				}).success(function(r) {
+					console.log('got search results', r);
+					ret.resolve(r);
+				});
+				return ret.promise;
       }
 
     }

@@ -25,7 +25,15 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="wrapper" ng-view="" ng-show="showGuity"></div>
+    <div class="wrapper" ng-show="showGuity">
+      <ng-include src="'views/sidebar.html'"></ng-include>
+      <div class="site">
+        <div class="main-page">
+          <ng-include src="'views/header.html'"></ng-include>
+          <div ng-view=""></div>
+        </div>
+      </div>
+    </div>
 
     <div class="login-area" ng-show="showLogin">
       <div ng-controller="LoginCtrl">
@@ -71,6 +79,8 @@
         <script src="scripts/controllers/user.js"></script>
         <script src="scripts/controllers/album.js"></script>
         <script src="scripts/controllers/playlist.js"></script>
+        <script src="scripts/directives/searchForm.js"></script>
+        <script src="scripts/directives/searchResults.js"></script>
         <!-- endbuild -->
 </body>
 </html>

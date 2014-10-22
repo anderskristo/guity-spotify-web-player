@@ -1,1 +1,30 @@
-<p>This is the playlist view.</p>
+<div class="playlist-tracks">
+  <table>
+    <thead>
+      <th>Artist</th>
+      <th>Track</th>
+      <th>Album</th>
+      <th>Duration</th>
+      <th>Popularity</th>
+    </thead>
+    <tbody>
+      <tr ng-repeat="track in tracks">
+        <td>
+          <a ng-click="hideSearch()" href="#/artist/{{result.artists.0.id}}">{{ track.track.artists.0.name }}</a>
+        </td>
+        <td>
+          <a ng-click="hideSearch()" href="#">{{ track.track.name }}</a>
+        </td>
+        <td>
+          <a ng-click="hideSearch()" href="#/album/{{ track.track.album.id }}">{{ track.track.album.name }}</a>
+        </td>
+        <td>
+
+        </td>
+        <td>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

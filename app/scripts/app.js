@@ -25,7 +25,7 @@ angular
         templateUrl: 'views/album.html',
         controller: 'AlbumCtrl'
       })
-      .when('/playlist', {
+      .when('/user/:username/playlist/:playlist', {
         templateUrl: 'views/playlist.html',
         controller: 'PlaylistCtrl'
       })
@@ -35,10 +35,10 @@ angular
   })
   .controller('AppCtrl', function ($scope, $location, guityAPI, Auth) {
 
-    function checkUser() {
+    function checkUser () {
       guityAPI.getCurrentUser().then(function (user) {
         Auth.setUserName(user.id);
-        Auth.setUserCountry(user.country);
+        Auth.setUserCountry(user.country);        
         console.log(user);
         console.log('we are in ...');
         $scope.$emit('login');
