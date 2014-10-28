@@ -5,37 +5,24 @@
   </div>
 
   <div class="search-results" ng-controller="SearchCtrl" ng-show="showSearch">
-    <table>
-      <thead>
-        <th></th>
-        <th>Artist</th>
-        <th>Track</th>
-        <th>Album</th>
-        <th>Duration</th>
-        <th>Popularity</th>
-      </thead>
-      <tbody>
-        <tr ng-repeat="result in results">
-          <td>
-            <img ng-src="{{ result.album.images.2.url }}" width="50" height="50"/>
-          </td>
-          <td>
-            <a ng-click="hideSearch()" href="#/artist/{{result.artists.0.id}}">{{ result.artists.0.name }}</a>
-          </td>
-          <td>
-            <a ng-click="hideSearch()" href="#/track/{{result.artists.0.id}}">{{ result.name }}</a>
-          </td>
-          <td>
-            <a ng-click="hideSearch()" href="#/album/{{result.album.id}}">{{ result.album.name }}</a>
-          </td>
-          <td>
-
-          </td>
-          <td>
-
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <span>Artists</span>
+    <ul>
+      <li class="search-item" ng-repeat="artist in artists | limitTo : 3">
+        <img src="{{artist.images.0.url}}" alt="" />
+        <a ng-click="hideSearch()" href="#/artist/{{artist.id}}">{{ artist.name }}</a>
+      </li>
+    </ul>
+    <ul>
+      <span>Tracks</span>
+      <li class="search-item" ng-repeat="result in results | limitTo : 3">
+        <a ng-click="hideSearch()" href="#/artist/{{result.artists.0.id}}">{{ result.name }}</a>
+      </li>
+    </ul>
+    <ul>
+      <span>Albums</span>
+      <li class="search-item" ng-repeat="album in albums | limitTo : 3">
+        <a ng-click="hideSearch()" href="#/album/{{album.id}}">{{ album.name }}</a>
+      </li>
+    </ul>
   </div>
 </div>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css styles/vendor.css -->
-    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700' rel='stylesheet' type='text/css'>
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.css" />
     <!-- endbower -->
@@ -27,9 +27,9 @@
     <!-- Add your site or application content here -->
     <div class="wrapper" ng-show="showGuity">
       <ng-include src="'views/sidebar.html'"></ng-include>
+      <ng-include src="'views/header.html'"></ng-include>
       <div class="site">
         <div class="main-page">
-          <ng-include src="'views/header.html'"></ng-include>
           <div ng-view=""></div>
         </div>
       </div>
@@ -79,7 +79,6 @@
         <script src="scripts/controllers/user.js"></script>
         <script src="scripts/controllers/album.js"></script>
         <script src="scripts/controllers/playlist.js"></script>
-        <script src="scripts/directives/searchForm.js"></script>
         <script src="scripts/directives/searchResults.js"></script>
         <!-- endbuild -->
 </body>

@@ -1,46 +1,69 @@
 /* -=Header
 ------------------------------------ */
 
-.header {
+header.header {
+  position: relative;
+  z-index: 999999;
   float: left;
   width: 100%;
-  min-height: 80px;
+  height: 80px;
   background-color: #fff;
   @include box-sizing(border-box);
+}
+
+/* -=Logotype */
+
+.logo {
+  float: left;
+  width: 200px;
+  height: 80px;
+  text-align: center;
+  background-color: $main-color;
+  a {
+    text-decoration: none;
+  }
+  span {
+    display: block;
+    padding: 26px;
+    font-size: 27px;
+    text-transform: uppercase;
+    color: #fff;
+  }
 }
 
 /* -=Search */
 
 .search-artist {
   position: absolute;
+  left: 200px;
+  width: 400px;
   height: 100%;
-  width: 100%;
-  &.is-hidden {
-    height: auto;
-    width: auto;
-  }
 }
 
 .input-wrapper {
   position: relative;
   float: left;
-  margin-top: 10px;
+  margin-top: 5px;
   padding: 10px 20px;
   .fa.fa-search {
     position: absolute;
     right: 35px;
-    top: 23px;
+    top: 28px;
     color: $main-color;
     font-size: 18px;
   }
 }
 
 .search__input {
-  padding: 10px 20px;
+  padding: 15px 20px;
   width: 400px;
+  background: $light-grey;
   font-size: 18px;
-  border: 1px solid #e5e5e5;
-  @include border-radius(20px);
+  border: 0;
+  border-left: 2px solid $main-color;
+  @include border-radius(30px);
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
   &:active,
   &:focus, {
     outline: none;
@@ -52,8 +75,8 @@
   top: 80px;
   overflow-y: scroll;
   padding: 20px;
-  width: 100%;
-  height: 100%;
+  width: 472px;
+  height: auto;
   background: #fff;
   @include box-sizing(border-box);
   &.is-active {
@@ -64,34 +87,11 @@
   }
 }
 
-.search-results table {
-  width: 100%;
-  border-collapse: collapse;
-  th {
-    padding: 0 10px;
-    text-align: left;
-  }
-  tbody tr {
-    border-bottom: 1px solid #eee;
-  }
-  td {
-    padding: 10px;
-    vertical-align: middle;
-    a {
-      color: #3D3D3D;
-      text-decoration: none;
-      @include transition(color, .3s, ease);
-      &:hover {
-        color: $main-color;
-      }
-    }
-  }
-}
-
 .search-item {
   margin-bottom: 15px;
   padding-bottom: 15px;
   border-bottom: 1px solid #eee;
+  list-style: none;
   a {
     display: inline-block;
     vertical-align: top;
@@ -110,4 +110,24 @@
   float: right;
   position: relative;
   z-index: 101;
+  ul {
+    line-height: 79px;
+    li {
+      display: inline-block;
+      margin-right: 20px;
+      vertical-align: middle;
+      img {
+        @include border-radius(50%);
+        vertical-align: middle;
+      }
+      a {
+        color: $text-color;
+        text-decoration: none;
+        @include transition(color, .3s, ease);
+        &:hover {
+          color: $main-color;
+        }
+      }
+    }
+  }
 }

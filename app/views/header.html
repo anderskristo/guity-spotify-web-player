@@ -1,8 +1,15 @@
 <header class="header">
+  <div class="logo">
+    <a href="/">
+      <span>Guity</span>
+    </a>
+  </div>
   <searchresults></searchresults>
   <div class="wc-user">
-    User: <a href="#/user/{{username}}">{{username}}</a> from {{userCountry}}
-    <p ng-click="logout()">Logout</p>
+    <ul>
+      <li><img ng-src="{{headerUser.images.0.url}}" alt="{{headerUser.display_name}}" width="50"/></li>
+      <li><a href="#/user/{{username}}">{{username}}</a></li>
+      <li><p ng-click="logout()">Logout</p></li>
+    </ul>
   </div>
-
 </header>

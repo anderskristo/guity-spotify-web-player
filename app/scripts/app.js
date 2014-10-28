@@ -38,7 +38,7 @@ angular
     function checkUser () {
       guityAPI.getCurrentUser().then(function (user) {
         Auth.setUserName(user.id);
-        Auth.setUserCountry(user.country);        
+        Auth.setUserCountry(user.country);
         console.log(user);
         console.log('we are in ...');
         $scope.$emit('login');
@@ -50,9 +50,15 @@ angular
       });
     }
 
+    guityAPI.getCurrentUser().then(function (user) {
+      $scope.headerUser = user;
+    });
+
     $scope.username = Auth.getUserName();
     $scope.userCountry = Auth.getUserCountry();
 
+
+    // Is somebody loggedin?
     $scope.isLoggedIn = (Auth.getAccessToken() !== '');
     $scope.showGuity = $scope.isLoggedIn;
     $scope.showLogin = !$scope.isLoggedIn;

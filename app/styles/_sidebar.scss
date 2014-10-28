@@ -3,7 +3,7 @@
 
 .g-side {
   position: absolute;
-  top: 0;  
+  top: 80px;
   bottom: 0;
   left: 0;
   z-index: 1000;
@@ -13,24 +13,6 @@
   @include box-sizing(border-box);
 }
 
-/* -=Logotype */
-
-.logo {
-  height: 80px;
-  text-align: center;
-  background-color: $main-color;
-  a {
-    text-decoration: none;
-  }
-  span {
-    display: block;
-    padding: 26px;
-    font-size: 27px;
-    text-transform: uppercase;
-    color: #fff;
-  }
-}
-
 /* -=Main navigation */
 
 .g-navigation {
@@ -38,7 +20,7 @@
   overflow: auto;
   width: 100%;
   height: auto;
-  top: 80px;
+  top: 0;
   bottom: 250px;
   padding-top: 20px;
 }

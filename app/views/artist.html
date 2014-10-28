@@ -1,2 +1,35 @@
-<h1>{{artistInfo.name}}</h1>
-<img ng-src="{{artistInfo.images.1.url}}" alt=""/>
+<div class="artist-page">
+  <div class="do-parallax">
+    <div class="artist-header"></div>
+  </div>
+  <div class="header">
+    <div class="artist-info">
+      <div class="artist-image">
+        <img src="{{artistInfo.images.0.url}}" alt="{{artistInfo.name}}" width="200" height="200" />
+      </div>
+      <div class="artist-display">
+        <span class="artist-name">{{artistInfo.name}}</span>
+        <span class="artist-followers">Followers: {{artistInfo.followers.total | number : fractionSize}}</span>
+        <span class="artist-btn"><a ng-href="{{artistInfo.external_urls.spotify}}" target="_blank">Follow</a></span>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+
+    <ul class="artist-nav">
+      <li><span>Top tracks</span></li>
+      <li><span>Albums</span></li>
+      <li><span>Related artists</span></li>
+    </ul>
+
+    <div class="artist-albums clearfix">
+      <ul>
+        <li ng-repeat="album in albums">
+          <img src="{{album.images.1.url}}" alt="{{album.name}}" />
+          <a ng-href="#/album/{{album.id}}">{{album.name}}</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>

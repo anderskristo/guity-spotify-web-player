@@ -34,6 +34,19 @@ angular.module('guityApp')
         return ret.promise;
       },
 
+			getArtistAlbums: function (artistid, country) {
+				var ret = $q.defer();
+				$http.get(baseUrl + '/artists/' + encodeURIComponent(artistid) + '/albums?country=' + encodeURIComponent(country), {
+					headers: {
+						'Authorization': 'Bearer ' + Auth.getAccessToken()
+					}
+				}).success(function (r) {
+					console.log('got artist albums ...', r);
+					ret.resolve(r);
+				});
+				return ret.promise;
+			},
+
       getAlbum: function (albumid) {
         var ret = $q.defer();
         $http.get(baseUrl + '/albums/' + encodeURIComponent(albumid), {
