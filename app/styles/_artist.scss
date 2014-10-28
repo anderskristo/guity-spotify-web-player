@@ -98,10 +98,31 @@
         border-bottom: 2px solid $main-color;
       }
     }
+    &.active span {
+      color: $main-color;
+      border-bottom: 2px solid $main-color;
+    }
   }
 }
 
 .artist-albums {
+  ul {
+    li {
+      float: left;
+      width: 25%;
+      margin-bottom: 50px;
+      list-style: none;
+      a {
+        margin-top: 10px;
+        display: block;
+        color: #9B9B9B;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.artist-related {
   ul {
     li {
       float: left;

@@ -17,16 +17,33 @@
   <div class="content">
 
     <ul class="artist-nav">
-      <li><span>Top tracks</span></li>
-      <li><span>Albums</span></li>
-      <li><span>Related artists</span></li>
+      <li ng-class="isActive('tracks') ? 'active' : ''"><span ng-click="setCurrent('tracks')">Top tracks</span></li>
+      <li ng-class="isActive('albums') ? 'active' : ''"><span ng-click="setCurrent('albums')">Albums</span></li>
+      <li ng-class="isActive('related') ? 'active' : ''"><span ng-click="setCurrent('related')">Related artists</span></li>
     </ul>
 
-    <div class="artist-albums clearfix">
+    <div class="artist-albums clearfix" ng-show="isCurrent('albums')">
       <ul>
         <li ng-repeat="album in albums">
           <img src="{{album.images.1.url}}" alt="{{album.name}}" />
           <a ng-href="#/album/{{album.id}}">{{album.name}}</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="artist-related clearfix" ng-show="isCurrent('related')">
+      <ul>
+        <li ng-repeat="rel in related">
+          <img src="{{rel.images.1.url}}" alt="{{rel.name}}" width="300" height="300" />
+          <a ng-href="#/artist/{{rel.id}}">{{rel.name}}</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="artist-toptracks" ng-show="isCurrent('tracks')">
+      <ul>
+        <li ng-repeat="track in tracks">
+          <span>{{track.name}}</span>
         </li>
       </ul>
     </div>

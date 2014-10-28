@@ -47,6 +47,32 @@ angular.module('guityApp')
 				return ret.promise;
 			},
 
+      getRelatedArtists: function (artistid, country) {
+        var ret = $q.defer();
+        $http.get(baseUrl + '/artists/' + encodeURIComponent(artistid) + '/related-artists?country=' + encodeURIComponent(country), {
+          headers: {
+            'Authorization': 'Bearer ' + Auth.getAccessToken()
+          }
+        }).success(function (r) {
+          console.log('got related artists ...', r);
+          ret.resolve(r);
+        });
+        return ret.promise;
+      },
+
+      getArtistTopTracks: function (artistid, country) {
+        var ret = $q.defer();
+        $http.get(baseUrl + '/artists/' + encodeURIComponent(artistid) + '/top-tracks?country=' + encodeURIComponent(country), {
+          headers: {
+            'Authorization': 'Bearer ' + Auth.getAccessToken()
+          }
+        }).success(function (r) {
+          console.log('got top tracks by artist ...', r);
+          ret.resolve(r);
+        });
+        return ret.promise;
+      },
+
       getAlbum: function (albumid) {
         var ret = $q.defer();
         $http.get(baseUrl + '/albums/' + encodeURIComponent(albumid), {
